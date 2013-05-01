@@ -1,0 +1,23 @@
+{
+	"globals" : {
+		"jQuery" : true,
+		"Modernizr" : true,
+		"define" : true,
+		"require" : true,
+		"$" : true
+	},
+	"es5" : true,
+	"bitwise" : true,
+	"node" : true,
+	"curly" : true,
+	"eqeqeq" : false,
+	"forin" : true,
+	"noarg" : true,
+	"noempty" : true,
+	"nonew" : true,
+	"strict" : false,
+	"undef" : true,
+	"immed" : true,
+	"latedef" : true,
+	"trailing" : true
+}

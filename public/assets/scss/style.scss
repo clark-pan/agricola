@@ -1,0 +1,55 @@
+@import "inc/font.scss";
+/* Defaults for compass */
+$default-box-shadow-color: #000000;
+
+@import "compass";
+@import "compass/css3/pie";
+
+@import "inc/constants.scss";
+@import "inc/mixin.scss";
+
+@import "inc/reset.scss";
+
+/**
+ * Primary styles
+ *
+ * Author: 
+ */
+
+/* Common Elements */
+html {@include min-height(100%);}
+body {background:#ffffff; @include min-height(100%);}
+
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a.noUnderline {text-decoration:none !important;}
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active,
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {color:inherit;}
+
+ul, ol, p {margin:0 0 $general-spacing;}
+
+@import "inc/helper.scss";
+//Don't import if no icons
+//@import "inc/icons.scss";
+
+
+/* Superstructure */
+#container {width:1024px; margin:0px auto; padding:0; position:relative; min-height:100%;}
+#header {position:relative;}
+#main {position:relative;}
+#footer {position:relative;}
+
+//Import components and pagespecific sass files here
+/*@import "components/example.scss";
+@import "pagespecific/example.scss";*/
+
+@import "inc/print.scss";

@@ -1,0 +1,62 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="/assets/js/libs/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var config = {
+			user : {
+				username : "{{user.username}}"
+			}
+		};
+		//TODO: refactor
+		var socket = io.connect('/room');
+		socket.on('connect', function(){
+			socket.emit('join', { roomid : "{{room._id}}"});
+			socket.on('message', function(data){
+				appendMessage(data);
+			});
+		});
+
+		function appendMessage(data){
+			$('<div class="message-item"></div>').text(data.username + " : " + data.message).appendTo(".messages");
+		}
+
+		$(function(){
+			$('.message-box').keydown(function(e){
+				var $this, data;
+				if(e.which === 13){
+					$this = $(this);
+					if($this.val().length){
+						data = {
+							message : $this.val()
+						};
+						socket.emit('message', data);
+
+						$this.val('');
+						data.username = config.user.username;
+						appendMessage(data);
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	{{> user}}
+	{{> flash}}
+	<div class="messages">
+		
+	</div>
+	<input type="text" class="message-box" />
+</body>
+</html>

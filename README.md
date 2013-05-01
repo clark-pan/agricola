@@ -1,4 +1,4 @@
 agricola
 ========
 
-Agricola built on meteor
+Agricola built on Node

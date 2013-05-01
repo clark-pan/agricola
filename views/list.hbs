@@ -1,0 +1,32 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/js/libs/modernizr.js"></script>
+	<script src="assets/js/libs/require.js"></script>
+</head>
+<body>
+	{{> user}}
+	{{> flash}}
+	{{#if rooms}}
+	<ul>
+		{{#forEach rooms}}
+		<li><a href="/room/{{this._id}}">{{this._id}}</a></li>
+		{{/forEach}}
+	</ul>
+	{{else}}
+	There are currently no rooms<br />
+	<form action="/room/new" method="post">
+		<input type="submit" value="Create new room" />
+	</form>
+	{{/if}}
+</body>
+</html>

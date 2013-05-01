@@ -1,0 +1,23 @@
+//Resets the hover, active, and visited styles to a specified color
+//Useful for making block anchor elements text colored
+@mixin resetLinkColor($color:$text-color){
+	color:$color;
+	&:hover, &:active, &:visited {
+		color:$color;
+	}
+}
+
+@function getImage($image-path, $only-path:false){
+	@return image-url($image-path, $only-path, $version-string);
+}
+
+//Used to give a container the inline-block style layout
+//Sets the container's font-size and line-height to 0 and adds a -1px to letter-spacing and word-wrap to fix earlier webkit issue (for older android phones)
+//Then resets the font-size, line-height and letter spacing to a child element, also giving it display inline-block;
+@mixin inlineBlockLayout($selector:'li', $font-size:$base-font-size, $line-height:$base-line-height){
+	font-size:0px; line-height:0px; letter-spacing:-1px; word-spacing:-1px;
+	#{$selector} {
+		@include inline-block; vertical-align:top;
+		font-size:$font-size; line-height:$line-height; letter-spacing:normal; word-spacing:normal;
+	}
+}
